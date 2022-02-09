@@ -1,0 +1,10 @@
+- Axios
+- BCrypt
+- Cors
+- Express
+- Formik
+- PG
+- P H-store
+- React Router
+- React Router Dom
+- Sequelize
