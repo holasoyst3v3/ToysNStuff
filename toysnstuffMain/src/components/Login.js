@@ -9,9 +9,7 @@ function Login() {
   const onSubmit = (values) => {
     console.log("submit clicked");
   };
-  const validate = (values) => {
-    console.log("validation");
-  };
+  const validate = (values) => {};
   const formik = useFormik({
     initialValues,
     onSubmit,

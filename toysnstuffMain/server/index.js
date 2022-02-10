@@ -3,12 +3,10 @@ const cors = require("cors");
 const path = require("path");
 const sequelize = require("./database/sequelize");
 const bcrypt = require("bcrypt");
-require('dotenv').config();
+require("dotenv").config();
 const app = express();
-const PORT =  3001;
+const PORT = 3001;
 const { connect } = require("./testConnection");
-
-
 
 app.use(express.json());
 app.use(cors());
@@ -20,7 +18,6 @@ app.get("/getItems", async (req, res) => {
 
 sequelize.authenticate();
 
-
 app.post("/register", async (req, res) => {
   const { firstname, lastname, username, password } = req.body;
   const checkUser = await sequelize.query(`
@@ -31,14 +28,18 @@ app.post("/register", async (req, res) => {
   } else {
     const salt = bcrypt.genSaltSync(10);
     const passwordHash = bcrypt.hashSync(password, salt);
-    await sequelize.query(`
+    await sequelize
+      .query(
+        `
     INSERT INTO users(firstname, lastname, username, password)
     VALUES (
       '${firstname}',
       '${lastname}',
       '${username}',
       '${passwordHash}'
-    )`).catch(err => console.log(err))
+    )`
+      )
+      .catch((err) => console.log(err));
     const userInfo = await sequelize.query(`
       SELECT user_id, username, firstname FROM users WHERE username = '${username}'
     `);
