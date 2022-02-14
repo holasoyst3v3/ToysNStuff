@@ -1,8 +1,8 @@
 // import axios, { Axios } from 'axios'
-import React, { useState, useEffect, useCallbacks } from "react";
+import React, { useState, useEffect, } from "react";
 import axios, { Axios } from "axios";
 import ItemCard from "./ItemCard";
-import { Image } from "cloudinary-react";
+
 
 function ItemPage() {
   const [data, setData] = useState(0);
@@ -10,22 +10,23 @@ function ItemPage() {
   const [imageSelected, setImageSelected] = useState(0);
 
   useEffect(() => {
-    axios.get("/getItems").then((res) => {
+    axios.get("http://localhost:3001/getItems").then((res) => {
       // .then((res) => console.log('data data ya ya'))
       setData(res.data[0]);
     });
-  }[]);
+  }, []);
 
   const uploadImg = () => {
     const formData = new FormData();
     formData.append("file", imageSelected);
     formData.append("upload_preset", "xlKm3d2!2op");
 
-    axios
-      .post("https://api.cloudinary.com/v1_1/dbvwkew7p/image/upload", formData)
-      .then((response) => {
-        console.log(response);
-      });
+    Axios.post(
+      "https://api.cloudinary.com/v1_1/dbvwkew7p/image/upload",
+      formData
+    ).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -43,8 +44,8 @@ function ItemPage() {
         </div>
       </div>
       <h1>Items For Sale</h1>
-      <div>
-        <div className="card-container">
+      <div className="card-container">
+        <div className="item">
           {!data ? (
             <p>Gathering some toys n' stuff...</p>
           ) : (
