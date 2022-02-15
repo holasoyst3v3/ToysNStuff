@@ -6,20 +6,14 @@ function Login() {
     username: "",
     password: "",
   };
-  const onSubmit = (values) => {
-    console.log("submit clicked");
-  };
-  const validate = (values) => {};
   const formik = useFormik({
     initialValues,
-    onSubmit,
-    validate,
   });
-
+ 
   return (
     <div>
       <h2>Login Page</h2>
-      <form onSubmit={formik.handleSubmit}>
+      <form name="regform" onSubmit={formik.handleSubmit}>
         <input
           type="text"
           placeholder="Username"

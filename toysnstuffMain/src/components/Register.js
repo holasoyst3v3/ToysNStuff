@@ -11,10 +11,9 @@ function Register() {
     confirmPassword: "",
   };
   const onSubmit = (values) => {
-    axios.post('http://localhost:3001/register', values)
-    .then((res) => {
-        console.log(res.data)
-    })
+    axios.post("http://localhost:3001/register", values).then((res) => {
+      console.log(res.data);
+    });
   };
   const validate = (values) => {
     const errors = {};
@@ -34,7 +33,7 @@ function Register() {
     } else if (values.password !== values.confirmPassword) {
       errors.confirmPassword = "Passwords does not match";
     }
-    return errors
+    return errors;
   };
 
   // console.log("validation");
@@ -45,55 +44,66 @@ function Register() {
     validate,
   });
 
-  return <div>
+  return (
+    <div>
       <h2>SIGN UP!</h2>
-      <form onSubmit={formik.handleSubmit}>
-        <input
-          type="text"
-          placeholder="first Name"
-          name="firstname"
-          onChange={formik.handleChange}
-          value={formik.values.firstname}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          name="lastname"
-          onChange={formik.handleChange}
-          value={formik.values.lastname}
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          name="username"
-          onChange={formik.handleChange}
-          value={formik.values.username}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          name="confirmPassword"
-          onChange={formik.handleChange}
-          value={formik.values.confirmPassword}
-        />
-        <button type="submit" disabled={!formik.isValid}>
-          Join
-        </button>
-      </form>
+      <div className="form-group">
+        <form name="regform" onSubmit={formik.handleSubmit}>
+          <input
+            type="text"
+            placeholder="First Name"
+            name="firstname"
+            onChange={formik.handleChange}
+            value={formik.values.firstname}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="lastname"
+            onChange={formik.handleChange}
+            value={formik.values.lastname}
+          />
+          <input
+            type="text"
+            placeholder="Username"
+            name="username"
+            onChange={formik.handleChange}
+            value={formik.values.username}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            onChange={formik.handleChange}
+            value={formik.values.confirmPassword}
+          />
+          <button type="submit" disabled={!formik.isValid}>
+            Join
+          </button>
+          {/* <script>
+            function clearForm() {
+            document.regform.reset()
+            };
+        </script> */}
+        </form>
+      </div>
       <div>
-          {formik.errors.firstname ? <div>{formik.errors.firstname}</div> : null}
-          {formik.errors.username ? <div>{formik.errors.username}</div> : null}
-          {formik.errors.password ? <div>{formik.errors.password}</div> : null}
-          {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
+        {formik.errors.firstname ? <div>{formik.errors.firstname}</div> : null}
+        {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+        {formik.errors.confirmPassword ? (
+          <div>{formik.errors.confirmPassword}</div>
+        ) : null}
       </div>
     </div>
+  );
 }
 
 export default Register;

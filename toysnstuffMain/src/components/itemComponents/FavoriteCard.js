@@ -1,10 +1,10 @@
 import React from "react";
 // import { Image } from "cloudinary-react";
 
-function ItemCard(props) {
+function FavoriteCard(props) {
   return (
-    <div className="item-card">
-      <div className="card-text-container">
+    <div className="favorite-card">
+      <div className="favorite-text-container">
         <h2>{props.title}</h2>
         <div>
           {props.image}
@@ -18,13 +18,11 @@ function ItemCard(props) {
         <p>Sold by: {props.seller}</p>
         <p>Price: ${props.price}</p>
       </div>
-      <div className="card-button-container">
+      <div className="favorite-button-container">
         <button className="favorite-btn">💙</button>
       </div>
     </div>
   );
 }
 
-export default ItemCard;
-
-/* <a href={props.url}><button>View</button></a> */
+export default FavoriteCard;

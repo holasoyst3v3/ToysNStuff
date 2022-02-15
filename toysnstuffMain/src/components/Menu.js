@@ -10,9 +10,9 @@ function Menu() {
       </h4>
       <nav>
       <button className="nav"><Link to="/">Home</Link></button>
-      <button className="nav"><Link to="/Items">Buy</Link></button>
+      <button className="nav"><Link to="/Items">Buy/Sell</Link></button>
       <button className="nav"><Link to="/Register">Sign Up</Link></button>
-      <button className="nav"><Link to="/FavoriteItem">Favorites</Link></button>
+      <button className="nav"><Link to="/Favorites">Favorites</Link></button>
       </nav>
     </header>
   );

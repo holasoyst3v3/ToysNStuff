@@ -11,12 +11,33 @@ const { connect } = require("./testConnection");
 app.use(express.json());
 app.use(cors());
 
+sequelize.authenticate();
+
 app.get("/getItems", async (req, res) => {
   let data = await sequelize.query(`SELECT * FROM posts`);
   res.status(200).send(data);
 });
+app.get("/getFavorites", async (req, res) => {
+  let data = await sequelize.query(`SELECT * FROM favorites`);
+  res.status(200).send(data);
+});
 
-sequelize.authenticate();
+app.post("/upload", async (req, res) => {
+  const { post_title, post_desc, post_price, post_media } = req.body;
+  const uploadPost = await sequelize
+    .query(
+      `
+    INSERT INTO posts(post_title, post_desc, post_price, post_media)
+    VALUES (
+      '${post_title}',
+      '${post_desc}',
+      '${post_price}',
+      '${post_media}'
+    )`
+    )
+    .catch((err) => console.log(err));
+  res.status(200).send(uploadPost);
+});
 
 app.post("/register", async (req, res) => {
   const { firstname, lastname, username, password } = req.body;

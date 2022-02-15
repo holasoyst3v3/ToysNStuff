@@ -2,7 +2,7 @@
   text-align: center;
   background-color: rgb(220, 220, 220);
   height: auto;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 header {
@@ -13,7 +13,7 @@ header {
 }
 
 .nav {
-  text-decoration: none;
+  /* text-decoration: none; */
   margin: 2px;
   height: 24px;
   width: auto;
@@ -22,13 +22,16 @@ header {
   border-radius: 6px;
   color: #3c0585;
   font-size: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 body {
+  margin: 0;
   width: auto;
 }
 
+
+.favorite-card,
 .item-card {
   width: 300px;
   border: 3px solid steelblue;
@@ -40,58 +43,59 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  justify-content: center;
 }
 
+
+.favorite-container,
 .card-container {
   display: flex;
   width: 100%;
   justify-content: center;
 }
 
+.favorite-button-container,
 .card-button-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.favorite-card {
-  width: 300px;
-  border: 3px solid steelblue;
-  border-radius: 5px;
-  box-shadow: 8px 4px 22px 9px #000000;
-  background-color: azure;
-  padding: 15px;
-  margin: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.favorite-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.favorite-button-container {
-  display: flex;
-  flex-direction: column;
+/* .favorite-btn{
   align-items: center;
-}
-
-/* .card-button-container a {
-  height: 0;
-  width: 0;
+  top: 10px;
 } */
 
 button {
   height: 24px;
   width: auto;
-  padding: 0px, 5px, 0px, 5px;
+  /* padding: 0px, 5px, 0px, 5px; */
   border: none;
-  background-color: #ADD8E6;
+  background-color: #add8e6;
   border-radius: 6px;
   color: #3c0585;
   font-size: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
+}
+
+.favorite-btn{
+  height: 24px;
+  width: auto;
+  border: none;
+  background-color: #add8e6;
+  border-radius: 6px;
+  color: #3c0585;
+  font-size: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.favorite-btn:click {
+  height: 24px;
+  width: auto;
+  border: none;
+  background-color: #e6adad;
+  border-radius: 6px;
+  color: #3c0585;
+  font-size: 20px;
+  font-family: "Quicksand", sans-serif;
 }
