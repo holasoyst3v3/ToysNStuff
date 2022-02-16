@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useFormik } from "formik";
 
 function Login() {
@@ -6,8 +7,15 @@ function Login() {
     username: "",
     password: "",
   };
+  const onSubmit = (values) => {
+    axios.post("http://localhost:3001/login", values).then((res) => {
+      console.log(res.data);
+    });
+  };
+
   const formik = useFormik({
     initialValues,
+    onSubmit
   });
  
   return (
