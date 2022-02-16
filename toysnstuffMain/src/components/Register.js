@@ -10,9 +10,10 @@ function Register() {
     password: "",
     confirmPassword: "",
   };
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
     axios.post("http://localhost:3001/register", values).then((res) => {
       console.log(res.data);
+      onSubmitProps.resetForm()
     });
   };
   const validate = (values) => {

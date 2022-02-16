@@ -25,9 +25,10 @@ function Upload() {
       });
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
     axios.post("http://localhost:3001/upload", values).then((res) => {
       console.log(res.data);
+      onSubmitProps.resetForm();
     });
   };
 
@@ -50,9 +51,9 @@ function Upload() {
 
   const formik = useFormik({
     initialValues,
+    validate,
     onSubmit,
     uploadImg,
-    validate,
   });
 
   return (

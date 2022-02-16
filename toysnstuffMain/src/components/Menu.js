@@ -9,7 +9,6 @@ function Menu() {
         All of the pre owned goodies for your tots
       </h4>
       <nav>
-      <button className="nav"><Link to="/">Home</Link></button>
       <button className="nav"><Link to="/Items">Buy/Sell</Link></button>
       <button className="nav"><Link to="/Register">Sign Up</Link></button>
       <button className="nav"><Link to="/Favorites">Favorites</Link></button>
