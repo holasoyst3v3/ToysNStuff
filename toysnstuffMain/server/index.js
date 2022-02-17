@@ -40,12 +40,13 @@ app.post("/upload", async (req, res) => {
   const uploadPost = await sequelize
     .query(
       `
-    INSERT INTO posts(post_title, post_desc, post_price, post_media)
+    INSERT INTO posts(post_title, post_desc, post_price, post_media, username)
     VALUES (
       '${post_title}',
       '${post_desc}',
       '${post_price}',
-      '${post_media}'
+      '${post_media}',
+      '${req.body.username}'
     )`
     )
     .catch((err) => console.log(err.message));

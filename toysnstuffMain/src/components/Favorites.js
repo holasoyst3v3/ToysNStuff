@@ -21,7 +21,7 @@ function Favorites(props) {
       <div className="favorite-container">
         <div className="fav">
           {!data ? (
-            <p>Gathering some toys n' stuff...</p>
+            <p>Gathering some liked toys n' stuff...</p>
           ) : (
             data.map((item, index) => {
               return (

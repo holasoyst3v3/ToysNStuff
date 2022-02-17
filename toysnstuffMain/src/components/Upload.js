@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 
 function Upload() {
   const [imageSelected, setImageSelected] = useState(0);
-
+  const username = localStorage.getItem('username');
   const initialValues = {
     post_title: "",
     post_desc: "",
     post_price: "",
     post_media: "",
+    username: username
   };
 
   const uploadImg = () => {
