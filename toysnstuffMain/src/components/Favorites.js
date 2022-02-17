@@ -3,12 +3,13 @@ import axios from "axios";
 import FavoriteCard from "./itemComponents/FavoriteCard";
 
 function Favorites(props) {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
+  // const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/getFavorites").then((res) => {
+    axios.get(`http://localhost:3001/getFavorites/2`).then((res) => {
       // .then((res) => console.log('data data ya ya'))
-      // console.log(res.data[0]);
+      console.log(res.data[0]);
       setData(res.data[0]);
     });
   }, []);

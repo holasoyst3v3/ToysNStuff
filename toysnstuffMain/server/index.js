@@ -17,10 +17,14 @@ app.get("/getItems", async (req, res) => {
   let data = await sequelize.query(`SELECT * FROM posts`);
   res.status(200).send(data);
 });
-app.get("/getFavorites", async (req, res) => {
-  let data = await sequelize.query(`SELECT * FROM favorites`);
+
+app.get("/getFavorites/:user_id", async (req, res) => {
+  let data = await sequelize.query(`SELECT * FROM posts WHERE post_id IN (SELECT post_id FROM favorites WHERE user_id = '${req.params.user_id}') `);
+  // console.log(req.params.user_id)rs
   res.status(200).send(data);
 });
+
+// app.post req.body.{user_id} 
 
 app.post("/upload", async (req, res) => {
   const { post_title, post_desc, post_price, post_media } = req.body;
@@ -35,7 +39,7 @@ app.post("/upload", async (req, res) => {
       '${post_media}'
     )`
     )
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err.message));
   res.status(200).send(uploadPost);
 });
 
@@ -60,7 +64,7 @@ app.post("/register", async (req, res) => {
       '${passwordHash}'
     )`
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
     const userInfo = await sequelize.query(`
       SELECT user_id, username, firstname FROM users WHERE username = '${username}'
     `);
@@ -76,8 +80,8 @@ app.post("/login", async (req, res) => {
     SELECT * FROM users WHERE username = '${username}'
   `
     )
-    .catch((err) => console.log(err));
-  console.log(validUser);
+    .catch((err) => console.log(err.data));
+  // console.log(validUser);
   if (validUser[1].rowCount === 1) {
     if (bcrypt.compareSync(password, validUser[0][0].password)) {
       let object = {

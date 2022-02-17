@@ -1,7 +1,14 @@
 import React from "react";
+import axios from "axios";
 // import { Image } from "cloudinary-react";
 
 function ItemCard(props) {
+  const user_id = localStorage.getItem("user_id");
+
+  const favbtn = () => {
+    axios.post(`http://localhost:3001/favorites/`, {user_id:user_id, post_id:props.id})
+    console.log(props)
+  }
   return (
     <div className="item-card">
       <div className="card-text-container">
@@ -19,7 +26,7 @@ function ItemCard(props) {
         <p>Price: ${props.price}</p>
       </div>
       <div className="card-button-container">
-        <button className="favorite-btn">💙</button>
+        <button className="favorite-btn" onClick={favbtn}>💙</button>
       </div>
     </div>
   );

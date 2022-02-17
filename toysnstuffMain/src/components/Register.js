@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 
 function Register() {
+  let navigate = useNavigate();
   const initialValues = {
     firstname: "",
     lastname: "",
@@ -12,9 +14,11 @@ function Register() {
   };
   const onSubmit = (values, onSubmitProps) => {
     axios.post("http://localhost:3001/register", values).then((res) => {
-      console.log(res.data);
-      onSubmitProps.resetForm()
-    });
+      localStorage.setItem('user_id', res.data[0][0].user_id)
+      onSubmitProps.resetForm();
+      navigate("/login");
+    })
+    .catch((err) => console.error(err.response.data))
   };
   const validate = (values) => {
     const errors = {};
