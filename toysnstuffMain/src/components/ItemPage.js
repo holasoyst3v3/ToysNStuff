@@ -35,6 +35,7 @@ function ItemPage() {
               // console.log(item)
               return (
                 <ItemCard
+                  post_id={item.post_id}
                   title={item.post_title}
                   image={item.post_media}
                   seller={item.username}

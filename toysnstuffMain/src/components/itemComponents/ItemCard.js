@@ -3,10 +3,11 @@ import axios from "axios";
 // import { Image } from "cloudinary-react";
 
 function ItemCard(props) {
+  const username = localStorage.getItem("username");
   const user_id = localStorage.getItem("user_id");
 
   const favbtn = () => {
-    axios.post(`http://localhost:3001/favorites/`, {user_id:user_id, post_id:props.id})
+    axios.post(`http://localhost:3001/favorites/`, {post_id:props.post_id, user_id:user_id, username:username})
     console.log(props)
   }
   return (

@@ -18,12 +18,23 @@ app.get("/getItems", async (req, res) => {
   res.status(200).send(data);
 });
 
+app.delete("/favorites", async (req, res) => {
+  console.log(req.body)
+  let data = await sequelize.query(`DELETE FROM favorites WHERE user_id = '${req.body.user_id}' AND post_id = '${req.body.post_id}'`);
+  res.status(200).send(data);
+})
+
 app.get("/getFavorites/:user_id", async (req, res) => {
   let data = await sequelize.query(`SELECT * FROM posts WHERE post_id IN (SELECT post_id FROM favorites WHERE user_id = '${req.params.user_id}') `);
-  // console.log(req.params.user_id)rs
+  console.log(req.params.username)
   res.status(200).send(data);
 });
 
+app.post("/favorites/", async (req, res) => {
+  let data = await sequelize.query(`INSERT INTO favorites (post_id, user_id, username) VALUES ( '${req.body.post_id}', '${req.body.user_id}', '${req.body.username}') `);
+  // console.log(req.body.username)
+  res.status(200).send(data);
+});
 // app.post req.body.{user_id} 
 
 app.post("/upload", async (req, res) => {
@@ -85,9 +96,8 @@ app.post("/login", async (req, res) => {
   if (validUser[1].rowCount === 1) {
     if (bcrypt.compareSync(password, validUser[0][0].password)) {
       let object = {
-        id: validUser[0][0].id,
-        name: validUser[0][0].name,
-        username,
+        id: validUser[0][0].user_id,
+        name: validUser[0][0].username,
       };
       res.status(200).send(object);
     } else {

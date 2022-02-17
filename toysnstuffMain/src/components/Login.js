@@ -14,8 +14,8 @@ function Login(props) {
     axios
       .post("http://localhost:3001/login", values)
       .then((res) => {
-        localStorage.setItem('username', res.data.username)
-        localStorage.setItem('user_id', res.data.user_id)
+        localStorage.setItem('username', res.data.name)
+        localStorage.setItem('user_id', res.data.id)
         props.logFunction()
         navigate("/items");
       })
