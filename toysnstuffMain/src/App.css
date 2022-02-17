@@ -13,7 +13,7 @@ header {
 }
 
 .nav {
-  /* text-decoration: none; */
+  text-decoration: none;
   margin: 2px;
   height: 24px;
   width: auto;
@@ -21,7 +21,7 @@ header {
   background-color: #add8e6;
   border-radius: 6px;
   color: #3c0585;
-  font-size: 20px;
+  font-size: 15px;
   font-family: "Quicksand", sans-serif;
 }
 
@@ -61,11 +61,6 @@ body {
   align-items: center;
 }
 
-/* .favorite-btn{
-  align-items: center;
-  top: 10px;
-} */
-
 button {
   height: 24px;
   width: auto;
@@ -74,7 +69,7 @@ button {
   background-color: #add8e6;
   border-radius: 6px;
   color: #3c0585;
-  font-size: 20px;
+  font-size: 15px;
   font-family: "Quicksand", sans-serif;
 }
 

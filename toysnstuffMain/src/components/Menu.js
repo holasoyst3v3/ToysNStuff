@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function Menu() {
+  // let navigate = useNavigate();
+  let clearLocal = () => {
+    localStorage.clear();
+    window.location.reload();
+      }
   return (
     <header>
       <h2 style={{ color: "lightblue" }}>Toys N' Stuff</h2>
@@ -9,8 +15,9 @@ function Menu() {
         All of the pre owned goodies for your tots
       </h4>
       <nav>
-      <button className="nav"><Link to="/Items">Buy/Sell</Link></button>
-      <button className="nav"><Link to="/Favorites">Favorites</Link></button>
+      <button className="nav"><Link className="nav" to="/items">Buy/Sell</Link></button>
+      <button className="nav"><Link className="nav" to="/favorites">Favorites</Link></button>
+      <button className="nav" onClick={clearLocal}>Sign Out</button>
       </nav>
     </header>
   );

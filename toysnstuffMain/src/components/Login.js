@@ -46,13 +46,13 @@ function Login(props) {
     onSubmit,
   });
 
-  
+
   return (
     <div>
       <h2>Login with your credentials below!</h2>
       <h3>If you are not signed up with us, register today!!</h3>
       <button className="nav">
-            <Link to="/Register">Register!</Link>
+            <Link className="nav" to="/Register">Register!</Link>
           </button>
       <div>
       <form name="regform" onSubmit={formik.handleSubmit}>
@@ -71,7 +71,7 @@ function Login(props) {
           value={formik.values.password}
         />
         <button type="submit" disabled={!formik.isValid}>
-          Join
+          Log In!
         </button>
       </form>
       </div>

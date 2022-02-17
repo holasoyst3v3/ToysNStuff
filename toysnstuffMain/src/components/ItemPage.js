@@ -1,7 +1,7 @@
 // import axios, { Axios } from 'axios'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ItemCard from "./ItemCard";
+import ItemCard from "./itemComponents/ItemCard";
 import { Link } from "react-router-dom";
 
 function ItemPage() {
@@ -21,7 +21,7 @@ function ItemPage() {
       <div className="img-up">
         <div>
           <button className="nav">
-            <Link to="/Upload">Upload your wares</Link>
+            <Link className="nav" to="/Upload">Upload your wares</Link>
           </button>
         </div>
       </div>
