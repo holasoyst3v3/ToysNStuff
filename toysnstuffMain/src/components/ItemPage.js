@@ -1,4 +1,3 @@
-// import axios, { Axios } from 'axios'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ItemCard from "./itemComponents/ItemCard";
@@ -9,8 +8,6 @@ function ItemPage() {
 
   useEffect(() => {
     axios.get("http://localhost:3001/getItems").then((res) => {
-      // .then((res) => console.log('data data ya ya'))
-      // console.log(res.data[0]);
       setData(res.data[0]);
     });
   }, []);
@@ -32,7 +29,6 @@ function ItemPage() {
             <p>Gathering some toys n' stuff...</p>
           ) : (
             data.map((item, index) => {
-              // console.log(item)
               return (
                 <ItemCard
                   post_id={item.post_id}
@@ -52,15 +48,3 @@ function ItemPage() {
 }
 
 export default ItemPage;
-
-// const getData = async () => {
-//   axios.get('/getItems')
-//   // .then((res) => console.log('data data ya ya'))
-//   .then((res) => setData(res.data[0]))
-// }
-
-// useEffect(() => {
-//   getData()
-// }, [])
-//
-// data.map((element, index) => {return <ItemCard title={element.post_title} seller={element.username} desc={element.item_desc} url={element.url}

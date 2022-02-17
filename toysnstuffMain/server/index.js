@@ -32,10 +32,8 @@ app.get("/getFavorites/:user_id", async (req, res) => {
 
 app.post("/favorites/", async (req, res) => {
   let data = await sequelize.query(`INSERT INTO favorites (post_id, user_id, username) VALUES ( '${req.body.post_id}', '${req.body.user_id}', '${req.body.username}') `);
-  // console.log(req.body.username)
   res.status(200).send(data);
 });
-// app.post req.body.{user_id} 
 
 app.post("/upload", async (req, res) => {
   const { post_title, post_desc, post_price, post_media } = req.body;
@@ -92,7 +90,6 @@ app.post("/login", async (req, res) => {
   `
     )
     .catch((err) => console.log(err.data));
-  // console.log(validUser);
   if (validUser[1].rowCount === 1) {
     if (bcrypt.compareSync(password, validUser[0][0].password)) {
       let object = {

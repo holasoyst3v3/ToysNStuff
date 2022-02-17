@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// , useEffect
 import axios from "axios";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
@@ -43,9 +42,6 @@ function Upload() {
     if (!values.post_price) {
       errors.post_price = "Price Required";
     }
-    // if (!values.post_media) {
-    //   errors.post_media = "Picture Required";
-    // }
     return errors;
   };
 
@@ -114,9 +110,6 @@ function Upload() {
         {formik.errors.post_price ? (
           <div>{formik.errors.post_price}</div>
         ) : null}
-        {/* {formik.errors.post_media ? (
-          <div>{formik.errors.post_media}</div>
-        ) : null} */}
       </div>
     </div>
   );

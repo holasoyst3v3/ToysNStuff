@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router";
 import { useState, useEffect } from "react";
-// import Routes from "react-router-dom";
 import "./App.css";
 import Menu from "./components/Menu";
 import Home from "./components/Login";

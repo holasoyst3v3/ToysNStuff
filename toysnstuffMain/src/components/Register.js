@@ -41,7 +41,6 @@ function Register() {
     return errors;
   };
 
-  // console.log("validation");
 
   const formik = useFormik({
     initialValues,
@@ -92,11 +91,6 @@ function Register() {
           <button type="submit" disabled={!formik.isValid}>
             Join
           </button>
-          {/* <script>
-            function clearForm() {
-            document.regform.reset()
-            };
-        </script> */}
         </form>
       </div>
       <div>

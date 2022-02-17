@@ -34,5 +34,3 @@ function ItemCard(props) {
 }
 
 export default ItemCard;
-
-/* <a href={props.url}><button>View</button></a> */
