@@ -14,7 +14,7 @@ app.use(cors());
 sequelize.authenticate();
 
 app.get("/getItems", async (req, res) => {
-  let data = await sequelize.query(`SELECT * FROM posts`);
+  let data = await sequelize.query(`SELECT * FROM posts ORDER BY post_id DESC`);
   res.status(200).send(data);
 });
 
