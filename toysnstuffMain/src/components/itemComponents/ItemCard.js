@@ -10,17 +10,13 @@ function ItemCard(props) {
     axios.post(`http://localhost:3001/favorites/`, {post_id:props.post_id, user_id:user_id, username:username})
     console.log(props)
   }
+
   return (
     <div className="item-card">
       <div className="card-text-container">
         <h2>{props.title}</h2>
         <div>
-          {props.image}
-          {/* <Image
-            style={{ width: 200 }}
-            cloudname="dbvwkew7p"
-            publcid="https://res.cloudinary.com/dbvwkew7p/image/upload/v1644878397/ANIDOM_BobsBurgers_4096x2160_03_bltgv7.jpg"
-          ></Image> */}
+          <img src={props.image} style={{ width: 200 }} alt={"visual description"}/>
         </div>
         <p>{props.desc}</p>
         <p>Sold by: {props.seller}</p>

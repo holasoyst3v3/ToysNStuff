@@ -5,32 +5,41 @@ import { Link } from "react-router-dom";
 
 function Upload() {
   const [imageSelected, setImageSelected] = useState(0);
-  const username = localStorage.getItem('username');
+  const username = localStorage.getItem("username");
   const initialValues = {
     post_title: "",
     post_desc: "",
     post_price: "",
     post_media: "",
-    username: username
+    username: username,
   };
 
-  const uploadImg = () => {
+  const onSubmit = (values, onSubmitProps) => {
     const formData = new FormData();
     formData.append("file", imageSelected);
     formData.append("upload_preset", "xlKm3d2!2op");
     axios
       .post("https://api.cloudinary.com/v1_1/dbvwkew7p/image/upload", formData)
       .then((response) => {
-        console.log(response);
+        console.log(response.data.url);
+        axios
+          .post("http://localhost:3001/upload", {
+            values: values,
+            image: response.data.url,
+          })
+          .then((res) => {
+            console.log(res.data);
+            onSubmitProps.resetForm();
+          });
       });
   };
 
-  const onSubmit = (values, onSubmitProps) => {
-    axios.post("http://localhost:3001/upload", values).then((res) => {
-      console.log(res.data);
-      onSubmitProps.resetForm();
-    });
-  };
+  // const onSubmit = (values, onSubmitProps) => {
+  //   axios.post("http://localhost:3001/upload", values).then((res) => {
+  //     console.log(res.data);
+  //     onSubmitProps.resetForm();
+  //   });
+  // };
 
   const validate = (values) => {
     const errors = {};
@@ -50,7 +59,7 @@ function Upload() {
     initialValues,
     validate,
     onSubmit,
-    uploadImg,
+    // uploadImg,
   });
 
   return (
@@ -94,9 +103,7 @@ function Upload() {
               }}
               value={formik.values.post_media}
             />
-            <button type="submit" onClick={uploadImg}>
-              Upload
-            </button>
+            <button type="submit">Upload</button>
             <button type="button" className="nav">
               <Link to="/Items">Cancel</Link>
             </button>
@@ -117,3 +124,4 @@ function Upload() {
 }
 
 export default Upload;
+// onClick={uploadImg}

@@ -36,7 +36,8 @@ app.post("/favorites/", async (req, res) => {
 });
 
 app.post("/upload", async (req, res) => {
-  const { post_title, post_desc, post_price, post_media } = req.body;
+  const { post_title, post_desc, post_price, username } = req.body.values;
+  const { image } = req.body
   const uploadPost = await sequelize
     .query(
       `
@@ -45,8 +46,8 @@ app.post("/upload", async (req, res) => {
       '${post_title}',
       '${post_desc}',
       '${post_price}',
-      '${post_media}',
-      '${req.body.username}'
+      '${image}',
+      '${username}'
     )`
     )
     .catch((err) => console.log(err.message));
