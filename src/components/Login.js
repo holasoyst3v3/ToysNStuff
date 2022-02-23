@@ -52,7 +52,7 @@ function Login(props) {
       <h2>Login with your credentials below!</h2>
       <h3>If you are not signed up with us, register today!!</h3>
       <button className="nav">
-            <Link className="nav" to="/Register">Register!</Link>
+            <Link className="nav" to="/Register" style={{ textDecoration: "none" }}>Register!</Link>
           </button>
       <div>
       <form name="regform" onSubmit={formik.handleSubmit}>

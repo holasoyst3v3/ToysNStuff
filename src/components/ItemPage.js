@@ -18,7 +18,7 @@ function ItemPage() {
       <div className="img-up">
         <div>
           <button className="nav">
-            <Link className="nav" to="/Upload">Upload your wares</Link>
+            <Link className="nav" to="/Upload" style={{ textDecoration: "none" }}>Upload your wares</Link>
           </button>
         </div>
       </div>

@@ -12,6 +12,13 @@ header {
   background-color: #3c0585;
 }
 
+.logo {
+  text-decoration: none;
+  width: auto;
+  color: lightblue;
+  font-family: "Quicksand", sans-serif;
+}
+
 .nav {
   text-decoration: none;
   margin: 2px;
@@ -21,6 +28,18 @@ header {
   background-color: #add8e6;
   border-radius: 6px;
   color: #3c0585;
+  font-size: 15px;
+  font-family: "Quicksand", sans-serif;
+}
+.nav:hover {
+  text-decoration: none;
+  margin: 2px;
+  height: 24px;
+  width: auto;
+  border: none;
+  background-color: #618f9e;
+  border-radius: 6px;
+  color: #6507df;
   font-size: 15px;
   font-family: "Quicksand", sans-serif;
 }

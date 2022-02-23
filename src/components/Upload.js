@@ -105,7 +105,7 @@ function Upload() {
             />
             <button type="submit">Upload</button>
             <button type="button" className="nav">
-              <Link to="/Items">Cancel</Link>
+              <Link to="/Items" style={{ textDecoration: "none" }}>Cancel</Link>
             </button>
           </form>
         </div>
